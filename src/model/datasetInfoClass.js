@@ -23,8 +23,6 @@ class DatasetInfoClass {
             this.db = dbs.db(databaseConfig.db);
         }
     }
-
-
 }
 
 module.exports = DatasetInfoClass;

@@ -1,8 +1,10 @@
 exports.database = {
-    host: '104.251.225.136',
-    db: 'dataset-info',
+    host: '45.79.187.245',
+    db: 'dataset-management',
     table: 'dataset-info',
-    port: 12222,
+    port: 10101,
 };
 
 exports.listenOnPort = 11111;
+
+exports.getUserIDByDataSetTokenUrl = "https://user.rrworkflow.com/backend/getIdByDatabaseToken";
