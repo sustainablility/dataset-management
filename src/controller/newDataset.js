@@ -22,7 +22,7 @@ async function newDataset(request, response) {
 
     for (let i in decripted) {
         if (i == null) {
-            response.send("decryptionFailed");
+            response.send("decryptionFaidled");
             return null;
         }
     }
