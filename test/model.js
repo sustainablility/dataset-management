@@ -12,9 +12,10 @@ describe('Model Test',function () {
         (
             async function() {
                 datasetInfo = new DataSetInfoClass();
-                await datasetInfo.connect().catch(err => {
-                    assert.fail(err);
-                });
+                let result = await datasetInfo.connect();
+                if (!result) {
+                    assert.fail("Database Connection error");
+                }
                 done();
             }
         )();

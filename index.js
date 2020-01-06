@@ -7,6 +7,7 @@ app.use(cors());
 async function service() {
     app.post("/newDatasetRecord", await require('./src/controller/newDataset'));
     app.get("/verifyDatasetTokenAndDatasetName", await require('./src/controller/verifyDatasetTokenAndDatasetName'));
+    app.get("/checkDatasetNameExistence", await require('./src/controller/checkDatasetNameExistence'));
     app.listen(config.listenOnPort);
 }
 

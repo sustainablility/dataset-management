@@ -27,7 +27,10 @@ async function newDataset(request, response) {
         }
     }
     let dataset = new DatasetClass();
-    await dataset.connect().catch();
+    if (! await dataset.connect()) {
+        response.send("Database Error");
+        return null;
+    }
     let newDatasetResult = await dataset.putNewDatasetInfo(
         decripted.name,
         Number(decripted.publicity),
@@ -35,6 +38,8 @@ async function newDataset(request, response) {
         JSON.parse(decripted.ownerList),
         JSON.parse(decripted.adminList)
     );
+
+    dataset.done();
 
     if (newDatasetResult.result.ok !== 1) {
         response.send("Server error");

@@ -24,12 +24,12 @@ async function verifyDatasetTokenAndDatasetName(request, response) {
         return null;
     }
     let datasetInfo = new Dataset();
-    await datasetInfo.connect().catch(err => {
-        response.status(500).send("err");
-        log(4, err);
+    if (! await datasetInfo.connect()) {
+        response.send("Database error");
         return null;
-    });
+    }
     let datasetInformation = await datasetInfo.getDatasetInfoByDatasetName(datasetName);
+    datasetInfo.done();
     if (datasetInformation === null) {
         response.status(500).send("err");
         return null;

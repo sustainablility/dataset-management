@@ -15,13 +15,13 @@ class DatasetInfoClass {
             log.fatal("Cannot Connect to database",error);
         });
         if (dbs === undefined) {
-            throw new Error("Error when Connect to database");
-        } else {
-            this.done = () => {
-                dbs.close();
-            };
-            this.db = dbs.db(databaseConfig.db);
+            return false;
         }
+        this.done = () => {
+            dbs.close();
+        };
+        this.db = dbs.db(databaseConfig.db);
+        return true;
     }
 }
 
